@@ -9,8 +9,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "run-test": "npm run build && k6 run --out json=reports/$(date +%Y%m%d_%H%M%S)_report.json dist/tests/basic-load-test.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:basic": "npm run build && k6 run --out json=reports/$(date +%Y%m%d_%H%M%S)_basic_report.json dist/tests/basic-load-test.js",
+    "test:api": "npm run build && k6 run --out json=reports/$(date +%Y%m%d_%H%M%S)_api_report.json dist/tests/api-validation-test.js",
+    "test:stress": "npm run build && k6 run --out json=reports/$(date +%Y%m%d_%H%M%S)_stress_report.json dist/tests/stress-test.js",
+    "test:checkout": "npm run build && k6 run --out json=reports/$(date +%Y%m%d_%H%M%S)_checkout_report.json dist/tests/checkout-performance-test.js",
+    "test:all": "npm run test:basic && npm run test:api && npm run test:stress && npm run test:checkout",
+    "test": "npm run test:basic"
   },
   "keywords": [],
   "author": "",

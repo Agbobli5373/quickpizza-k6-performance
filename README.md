@@ -35,12 +35,58 @@ This is an enterprise-ready POC for performance and load testing using K6, writt
    npm run build
    ```
 
-2. Run the load test:
+2. Run tests:
+
    ```bash
-   npm run run-test
+   # Run basic load test (default)
+   npm test
+
+   # Run all test suites
+   npm run test:all
+
+   # Run specific test types
+   npm run test:basic     # Basic user journey test
+   npm run test:api       # API endpoint validation
+   npm run test:stress    # Stress test with ramp-up
+   npm run test:checkout  # Checkout performance test
    ```
 
-This will compile the TypeScript code and execute the K6 test, generating a JSON report in the `reports/` directory.
+## Test Scenarios
+
+### Basic Load Test (`basic-load-test.ts`)
+
+- Homepage browsing
+- Menu API calls
+- Pizza details viewing
+- Drink menu browsing
+- Order placement simulation
+
+### API Validation Test (`api-validation-test.ts`)
+
+- Validates all API endpoints
+- Checks response times and status codes
+- Ensures data integrity
+
+### Stress Test (`stress-test.ts`)
+
+- Ramp-up load testing (10 → 100 users)
+- Tests system under heavy load
+- Monitors performance degradation
+
+### Checkout Performance Test (`checkout-performance-test.ts`)
+
+- End-to-end order flow
+- Payment processing simulation
+- Customer data validation
+
+## QuickPizza Demo Specific Tests
+
+The framework is pre-configured for the QuickPizza demo application (https://quickpizza.grafana.com/) with realistic scenarios:
+
+- **Pizza Menu Browsing**: Tests menu loading and filtering
+- **Order Placement**: Simulates customer orders with various pizza/drink combinations
+- **API Reliability**: Validates all endpoints under load
+- **Checkout Flow**: Tests complete order processing pipeline
 
 ## Configuration
 
