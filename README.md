@@ -102,6 +102,75 @@ Environment-specific configurations are stored in `configs/`:
 - Built-in K6 metrics include response times, error rates, throughput
 - Thresholds are defined in the test scripts for pass/fail criteria
 
+## HTML Report Generation
+
+The framework supports multiple HTML reporting options for beautiful, shareable reports:
+
+### Built-in K6 HTML Reports
+
+```bash
+# Generate HTML report with K6's built-in reporter
+npm run test:html
+
+# Generate multiple formats (JSON, CSV, HTML)
+npm run test:multiple
+```
+
+### Custom HTML Reports
+
+```bash
+# Generate custom HTML report from latest JSON
+npm run report:html
+
+# Generate HTML reports for all JSON files
+npm run report:html:all
+
+# Run test and generate custom report
+npm run test:with-custom-report
+```
+
+### HTML Report Features
+
+- **Visual Dashboard**: Clean, modern interface with charts and metrics
+- **Performance Metrics**: Response times, error rates, throughput graphs
+- **Test Results**: Detailed check results with pass/fail status
+- **Summary Statistics**: Total requests, duration, virtual users
+- **Responsive Design**: Works on desktop and mobile devices
+- **Professional Styling**: Enterprise-ready appearance
+
+### Report File Structure
+
+```
+reports/
+├── 20250913_180354_basic_report.json
+├── 20250913_180354_basic_report.html    # K6 built-in
+├── 20250913_180354_basic_custom.html    # Custom generator
+└── 20250913_180354_basic_report.csv
+```
+
+### Custom Report Generator
+
+The framework includes a custom HTML report generator (`scripts/html-report-generator.js`) that:
+
+- Processes K6 JSON output files
+- Creates beautiful, interactive HTML reports
+- Includes performance charts and metrics
+- Supports custom branding and styling
+- Can be extended for additional metrics
+
+### Usage Examples
+
+```bash
+# Generate HTML from specific JSON file
+node scripts/html-report-generator.js reports/test_report.json reports/test_report.html "My Test"
+
+# Batch process all reports
+npm run report:html:all
+
+# Open HTML report in browser
+open reports/20250913_180354_basic_report.html
+```
+
 ## Advanced Features (for Enterprise)
 
 - **Monitoring Integration**: Can be configured to send metrics to InfluxDB/Prometheus
